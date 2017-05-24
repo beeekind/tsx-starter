@@ -6,4 +6,4 @@ node_js:
 sudo: false
 
 script:
-  - yarn run test
+  - npm run test
