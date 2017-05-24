@@ -1,0 +1,9 @@
+anguage: node_js
+
+node_js:
+  - "7"
+
+sudo: false
+
+script:
+  - yarn run test

@@ -14,10 +14,10 @@ const byId = (state={}, action) => {
             };
 
         case 'TOGGLE_TODO_SUCCESS':
-            console.log(2, state[action.id]);
-            state[action.id].completed = !state[action.id].completed;
-            console.log(4, state[action.id]);
-            return state;
+            return {
+                ...state,
+                [action.response.id]: action.response
+            };
 
         default:
             return state

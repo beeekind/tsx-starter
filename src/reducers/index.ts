@@ -22,8 +22,8 @@ export const getVisibleTodos = (state, filter) => {
 // compose the root reducer
 const rootReducer = combineReducers({ byId, listByFilter });
 
-const configureStore = () => {
-    const middlewares = [ createLogger(), promise, thunk ];
+const configureStore = (testing=false) => {
+    const middlewares = testing ? [promise, thunk] :[createLogger(),promise,thunk ];
     return createStore(rootReducer, applyMiddleware(...middlewares));
 };
 

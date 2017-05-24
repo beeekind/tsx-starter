@@ -5,7 +5,7 @@ import { toggleTodoAction, fetchTodosAction } from '../actions';
 import { getVisibleTodos, getIsFetching, getErrorMessage } from '../reducers';
 import { FetchError } from './error';
 
-const TodoView = ({ onClick, completed, text }) => {
+export const TodoView = ({ onClick, completed, text }) => {
     return <li
         onClick={onClick}
         style={{textDecoration: completed ? 'line-through' : 'none'}}
@@ -14,7 +14,7 @@ const TodoView = ({ onClick, completed, text }) => {
     </li>
 };
 
-const TodoList = ({ todos, onTodoClick, filter }) => {
+export const TodoList = ({ todos, onTodoClick, filter, parent }) => {
     return <ul>
         {todos.map(todo =>
             <TodoView
@@ -39,12 +39,11 @@ let VisibleTodoList = class extends React.Component<any, any>{
 
     fetchData(){
         const { filter, fetchTodosAction } = this.props;
-        fetchTodosAction(filter).then(() => { console.log('done!') });
+        fetchTodosAction(filter).then(() => {  });
     }
 
     render(){
         const { todos, isFetching, toggleTodoAction, errorMessage, filter } = this.props;
-        console.log(todos.length, isFetching);
 
         if (isFetching && !todos.length) {
             return <p> Loading... </p>
@@ -58,7 +57,7 @@ let VisibleTodoList = class extends React.Component<any, any>{
 
         }
 
-        return <TodoList todos={todos} onTodoClick={toggleTodoAction} filter={filter} />
+        return <TodoList todos={todos} onTodoClick={toggleTodoAction} filter={filter} parent={this}/>
     }
 };
 

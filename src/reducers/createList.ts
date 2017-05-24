@@ -14,7 +14,7 @@ const createList = (filter) => {
                     state;
 
             case 'TOGGLE_TODO_SUCCESS':
-                return state;
+                return [...state, action.response.id];
 
             default:
                 return state
@@ -46,9 +46,6 @@ const createList = (filter) => {
         switch (action.type){
             case 'FETCH_TODOS_FAILURE':
                 return action.message;
-            case 'FETCH_TODOS_REQUEST':
-            case 'FETCH_TODOS_SUCCESS':
-                return null;
             default:
                 return state;
         }
